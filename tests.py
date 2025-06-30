@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 
-from functions.get_file_content import get_file_content
+from functions.write_file import write_file
 
 
 def main():
-    result1 = get_file_content("calculator", "main.py")
+    result1 = write_file("calculator", "lorem.txt",
+                         "wait, this isn't lorem ipsum")
     print(result1)
 
-    result2 = get_file_content("calculator", "pkg/calculator.py")
+    result2 = write_file("calculator", "pkg/morelorem.txt",
+                         "lorem ipsum dolor sit amet")
     print(result2)
 
-    result3 = get_file_content("calculator", "/bin/cat")
+    result3 = write_file("calculator", "/tmp/temp.txt",
+                         "this should not be allowed")
     print(result3)
 
 
