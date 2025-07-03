@@ -1,4 +1,5 @@
 from pathlib import Path
+from google.genai import types
 
 
 def get_file_content(working_directory, file_path):
@@ -32,3 +33,21 @@ def get_file_content(working_directory, file_path):
         return f"Error: Permission denied to read '{file_path}'"
     except Exception as e:
         return f"Error reading file: {str(e)}"
+
+
+schema_get_file_content = types.FunctionDeclaration(
+    name="get_file_content",
+    description="Returns a string limited to 10000 characters"
+                "containing the content of the target file"
+                ", constrained to the working directory.",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="The path to the file whose content should be read, relative to the working directory.",
+            ),
+        },
+        required=["file_path"],
+    ),
+)
