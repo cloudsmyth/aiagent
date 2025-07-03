@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 
-from functions.write_file import write_file
+from functions.run_python_file import run_python_file
 
 
 def main():
-    result1 = write_file("calculator", "lorem.txt",
-                         "wait, this isn't lorem ipsum")
+    result1 = run_python_file("calculator", "main.py")
     print(result1)
 
-    result2 = write_file("calculator", "pkg/morelorem.txt",
-                         "lorem ipsum dolor sit amet")
+    result2 = run_python_file("calculator", "tests.py")
     print(result2)
 
-    result3 = write_file("calculator", "/tmp/temp.txt",
-                         "this should not be allowed")
+    result3 = run_python_file("calculator", "../main.py")
     print(result3)
+
+    result4 = run_python_file("calculator", "nonexistent.py")
+    print(result4)
 
 
 if __name__ == "__main__":
